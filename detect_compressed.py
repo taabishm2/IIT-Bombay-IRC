@@ -1,8 +1,6 @@
 import cv2
 import numpy as np
 
-cam = cv2.VideoCapture(1)
-
 img_gray_arr,img_rgb_arr,template_arr,w,h = ([]for i in range(5))
 threshold, flag = 0.7 , 0   
 
@@ -10,13 +8,6 @@ img_names = ['img1.jpg','img2.jpg','img3.jpg']
 tem_names = ['template1.jpg','template2.jpg','template3.jpg','template4.jpg']
 l_tem = len(tem_names)
 
-'''
-for i in range(3):
-    raw_input("Ready for image...")
-    for _ in range(10):
-        frame = cam.read()[1]
-    cv2.imwrite(filename=img_names[i],img=frame)'''
-    
 for i in range(3):
     img_rgb = cv2.imread(img_names[i])
     img_rgb_arr.append(img_rgb)
@@ -48,6 +39,7 @@ for i in range(3):
             flag = 1
             print 'Image at position: ', i+1,' matches with template: ', j+1
 if flag != 1: print "No match"
+
 
 
 
